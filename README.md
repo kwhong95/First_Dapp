@@ -25,3 +25,7 @@
 ### DAO - Sequence Diagram
 
 ![image](https://github.com/kwhong95/First_Dapp/assets/70752848/e329de06-6452-40e5-b328-35713da52396)
+
+## Stack
+
+- Frontend : Next.js
