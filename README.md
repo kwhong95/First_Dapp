@@ -29,3 +29,4 @@
 ## Stack
 
 - Frontend : Next.js
+- Blockchain : Hardhat
