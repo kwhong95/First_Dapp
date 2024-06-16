@@ -6,6 +6,7 @@ import {
   MenuItem,
   MenuList,
 } from "@chakra-ui/react";
+import Link from "next/link";
 import { GrTransaction } from "react-icons/gr";
 
 export const ActionsMenu = () => {
@@ -21,7 +22,9 @@ export const ActionsMenu = () => {
       </MenuButton>
       <MenuList>
         <MenuItem>Buy NFT</MenuItem>
-        <MenuItem>Buy TOKEN</MenuItem>
+        <MenuItem as={Link} href="/buy-token">
+          Buy TOKEN
+        </MenuItem>
         <MenuItem>DAO Proposal</MenuItem>
         <MenuItem>DAO Vote</MenuItem>
         <MenuItem>Multisig</MenuItem>
