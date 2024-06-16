@@ -1,9 +1,10 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import { Hero } from "@/components/contents/Hero";
+import { Heading, Text } from "@chakra-ui/react";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-    </main>
+    <>
+      <Hero />
+    </>
   );
 }
