@@ -1,11 +1,13 @@
 import { ethers } from "hardhat";
 
 async function main() {
-  console.log("deploying KyleToken contract");
-  const KyleToken = await ethers.deployContract("KyleToken");
-  await KyleToken.waitForDeployment();
+  const [deployer] = await ethers.getSigners();
+  console.log("Deploying contracts with the account:", deployer.address);
 
-  console.log(`KyleToken contract is deployed to ${KyleToken.target}`);
+  const TighToken = await ethers.getContractFactory("TighToken");
+  const tighToken = await TighToken.deploy(deployer);
+
+  console.log("MyToken deployed to:", tighToken.target);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
