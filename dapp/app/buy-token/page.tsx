@@ -1,6 +1,10 @@
+"use client";
+import useWeb3Provider from "@/hooks/useWeb3Provider";
 import { Button, Center, Container, Input, Text, Wrap } from "@chakra-ui/react";
 
 export default function BuyToken() {
+  const { state } = useWeb3Provider();
+
   return (
     <Center h="100vh" bg="black">
       <Container maxW="container.sm">

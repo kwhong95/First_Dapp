@@ -1,3 +1,4 @@
+"use client";
 import NextLink from "next/link";
 import { Box, Container, Flex, Heading, Image, Link } from "@chakra-ui/react";
 import { ConnectWalletBtn } from "../buttons/ConnectWalletBtn";
