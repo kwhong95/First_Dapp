@@ -7,21 +7,6 @@ import useWeb3Provider from "@/hooks/useWeb3Provider";
 
 export const ConnectWalletBtn = () => {
   const { connectWallet, disconnect, state } = useWeb3Provider();
-  // const { sdk, connected, connecting } = useSDK();
-
-  // const connect = async () => {
-  //   try {
-  //     await sdk?.connect();
-  //   } catch (err) {
-  //     console.warn(`No accounts found`, err);
-  //   }
-  // };
-
-  // const disconnect = () => {
-  //   if (sdk) {
-  //     sdk.terminate();
-  //   }
-  // };
 
   return (
     <>

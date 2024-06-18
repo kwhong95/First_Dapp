@@ -1,9 +1,29 @@
 "use client";
+import { useState } from "react";
+import { useBuyToken } from "@/hooks/abis";
+import {
+  Button,
+  Center,
+  Container,
+  Flex,
+  Input,
+  Text,
+  Wrap,
+} from "@chakra-ui/react";
 import useWeb3Provider from "@/hooks/useWeb3Provider";
-import { Button, Center, Container, Input, Text, Wrap } from "@chakra-ui/react";
 
 export default function BuyToken() {
   const { state } = useWeb3Provider();
+  const { buyToken, loading } = useBuyToken();
+
+  // Form data
+  const [ethVal, setEthVal] = useState("");
+  const [tokenAmount, setTokenAmount] = useState("0");
+
+  const onChangeEth = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEthVal(e.target.value);
+    setTokenAmount((Number(e.target.value) * 1000).toString());
+  };
 
   return (
     <Center h="100vh" bg="black">
@@ -19,11 +39,17 @@ export default function BuyToken() {
             <Text color="whiteAlpha.900" fontSize="1.8rem">
               Wallet Address
             </Text>
-            <Input
-              colorScheme="orange"
-              placeholder="Enter Wallet Address"
-              size="lg"
-            />
+            <Flex flexDir="column" gap={2}>
+              <Input
+                colorScheme="orange"
+                placeholder="Enter Wallet Address"
+                size="lg"
+                isDisabled
+                defaultValue={state.signer?.address}
+                _disabled={{ color: "white" }}
+              />
+              <Text>Please check your wallet address</Text>
+            </Flex>
           </>
           <>
             <Text color="whiteAlpha.900" fontSize="1.8rem">
@@ -33,6 +59,7 @@ export default function BuyToken() {
               colorScheme="orange"
               placeholder="Enter TOKEN PRICE(ETH)"
               size="lg"
+              onChange={onChangeEth}
             />
           </>
           <>
@@ -42,6 +69,12 @@ export default function BuyToken() {
             <Input
               colorScheme="orange"
               placeholder="Number of TOKEN"
+              defaultValue={0}
+              value={`${tokenAmount} TT`}
+              isDisabled
+              _disabled={{
+                color: Number(tokenAmount) > 0 && "white",
+              }}
               size="lg"
             />
           </>
@@ -51,7 +84,11 @@ export default function BuyToken() {
             Inquiry of the amount of TOKENs to be received
           </Button>
           <Button colorScheme="orange">Check the history</Button>
-          <Button colorScheme="orange" variant="outline">
+          <Button
+            colorScheme="orange"
+            variant="outline"
+            onClick={() => buyToken(Number(ethVal))}
+          >
             Buy TOKEN
           </Button>
           <Button colorScheme="red" variant="outline">

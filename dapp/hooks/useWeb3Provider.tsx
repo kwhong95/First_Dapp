@@ -1,6 +1,6 @@
 "use client";
 import { useState, useCallback, useEffect } from "react";
-import { ethers, Contract, JsonRpcSigner, BrowserProvider } from "ethers";
+import { ethers, JsonRpcSigner, BrowserProvider } from "ethers";
 
 
 import { useToast } from "@chakra-ui/react";
@@ -89,15 +89,6 @@ const useWeb3Provider = () => {
       window.ethereum?.removeAllListeners();
     };
   }, [state]);
-
-  // const ethereum = window.ethereum;
-  // const provider = new ethers.BrowserProvider(window.ethereum!);
-  // // const accounts: string[] = await provider.send("eth_requestAccounts", []);
-  // const TighToken = new Contract(
-  //   "0xF609aE7f87521D1DAE1412170B92cD10C0498ed3",
-  //   abi.abi as any,
-  //   "0xc307a4f67B56752fC93c6D7c5801fA8FC372357D" as any
-  // );
 
   return { connectWallet, disconnect, state };
 };

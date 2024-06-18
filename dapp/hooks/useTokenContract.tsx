@@ -1,11 +1,11 @@
 import { useMemo } from "react";
-import { IWeb3Context, useWeb3Context } from "./Web3Context";
+import { IWeb3Context, useWeb3Context } from "../contexts/Web3Context";
 import abi from "@/services/abi/erc20";
 import { Contract } from "ethers";
 
 const ADDRESS = process.env.NEXT_PUBLIC_ERC20;
 
-const useTighTokenContract = () => {
+const useTokenContract = () => {
   const { state } = useWeb3Context() as IWeb3Context;
 
   return useMemo(
@@ -14,4 +14,4 @@ const useTighTokenContract = () => {
   );
 };
 
-export default useTighTokenContract;
+export default useTokenContract;
